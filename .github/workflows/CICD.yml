@@ -4,6 +4,9 @@ on:
   push: 
     branches: [main]
   
+  pull_request: 
+    branches: [main]
+  
 jobs:
   build:
     runs-on: ubuntu-16.04
@@ -17,7 +20,7 @@ jobs:
       - name: Check Go Version
         run: |
           go version
-        
+          ls
       - name: Install dependencies
         run: |
           go get github.com/tebeka/go2xunit
@@ -30,8 +33,9 @@ jobs:
       - if: ${{success()}}
         name: Test Golbin
         run: |
-          go test -v
-          go test -v | go2xunit >report.xml
+          go test -v -cover
+          go test -v -cover | go2xunit >report.xml
+          ls
       - if: ${{failure()}}
         name: Create Issues
         uses: nashmaniac/create-issue-action@v1.1
