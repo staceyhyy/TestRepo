@@ -22,7 +22,7 @@ jobs:
         run: |
           go get github.com/tebeka/go2xunit
       
-      - if: $((success()}}
+      - if: ${{success()}}
         name: Install Goblin
         run: |
           go get github.com/franela/goblin
