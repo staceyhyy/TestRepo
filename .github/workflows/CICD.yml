@@ -14,7 +14,7 @@ jobs:
         uses: actions/setup-go@v2
         with:
             go-version: '1.15'
-      - name: Version Check Go
+      - name: Check Go Version
         run: |
           go version
-          
+        
